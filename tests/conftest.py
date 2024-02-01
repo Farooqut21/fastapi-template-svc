@@ -1,3 +1,5 @@
+import os
+import sys
 from typing import Any
 from typing import Generator
 
@@ -7,10 +9,8 @@ from fastapi.testclient import TestClient
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
 
-import sys
-import os
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))) 
-#this is to include backend dir in sys.path so that we can import from db,main.py
+sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
+# this is to include backend dir in sys.path so that we can import from db,main.py
 
 from app.database.base import Base
 from app.database.session import get_db
@@ -24,7 +24,7 @@ def start_application():
 
 
 SQLALCHEMY_DATABASE_URL = "postgresql://postgres:root123@localhost/test"
-print("Test Database URL is ",SQLALCHEMY_DATABASE_URL)
+print("Test Database URL is ", SQLALCHEMY_DATABASE_URL)
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
 SessionTesting = sessionmaker(autocommit=False, autoflush=False, bind=engine)
