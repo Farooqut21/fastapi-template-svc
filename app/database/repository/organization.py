@@ -39,7 +39,7 @@ def update_org(id: int, organization: OrganizationUpdate, database: Session):
 
 def delete_org(id: int, database: Session):
     org_in_database = (
-        database.query(Organizations).filter(Organizations.org_id == id).first()
+        database.query(Organizations).filter(Organizations.org_id == id)
     )
     if not org_in_database:
         return {"error": f"Could not find blog with id {id}"}
