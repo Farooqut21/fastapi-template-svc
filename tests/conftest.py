@@ -23,7 +23,7 @@ def start_application():
     return app
 
 
-SQLALCHEMY_DATABASE_URL = "postgresql://postgres:root123@localhost/test"
+SQLALCHEMY_DATABASE_URL = "sqlite:///./test_db.db"
 print("Test Database URL is ", SQLALCHEMY_DATABASE_URL)
 engine = create_engine(SQLALCHEMY_DATABASE_URL)
 
